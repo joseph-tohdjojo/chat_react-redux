@@ -1,0 +1,55 @@
+/*
+  This file is based off of animate.css
+  https://daneden.github.io/animate.css/
+*/
+
+.animated {
+  animation-duration: $transition_slow;
+  animation-fill-mode: both;
+}
+
+
+
+
+
+/****************\
+  FADE IN
+\****************/
+
+@keyframes fadeIn {
+  from {
+    @include opacity(0);
+  }
+
+  to {
+    @include opacity(1);
+    pointer-events: fadeIn;
+  }
+}
+
+.fadein {
+  animation-name: fadeIn;
+}
+
+
+
+
+
+/****************\
+  FADE OUT
+\****************/
+
+@keyframes fadeOut {
+  from {
+    @include opacity(1);
+  }
+
+  to {
+    @include opacity(0);
+    pointer-events: none;
+  }
+}
+
+.fadeout {
+  animation-name: fadeOut;
+}

@@ -1,0 +1,344 @@
+////////////////
+// base fonts
+////////////////
+
+@mixin t-thin {
+  font-family: $font_primary_thin;
+  font-weight: 100;
+}
+
+@mixin t-light {
+  font-family: $font_primary_light;
+  font-weight: 300;
+}
+
+@mixin t-regular {
+  font-family: $font_primary_regular;
+  font-weight: 400;
+}
+
+@mixin t-medium {
+  font-family: $font_primary_medium;
+  font-weight: 500;
+}
+
+@mixin t-bold {
+  font-family: $font_primary_bold;
+  font-weight: 700;
+}
+
+@mixin t-black {
+  font-family: $font_primary_black;
+  font-weight: 900;
+}
+
+@mixin t-italic {
+  font-style: italic;
+}
+
+@mixin t-sz-sm {
+  font-size: 14px;
+}
+@mixin t-sz-md {
+  font-size: 16px;
+}
+@mixin t-sz-lg {
+  font-size: 36px;
+}
+
+#dmg {
+  .dmg-t-dark {
+    color: $color_black;
+  }
+
+  .dmg-t-light {
+    color: $color_white;
+  }
+
+
+
+  ////////////////////
+  // heading 1 - h1 //
+  ////////////////////
+
+  @mixin t-heading1 {
+    @include t-thin;
+    font-size: 48px;
+    line-height: 62px;
+
+    @include media(md) {
+      font-size: 84px;
+      line-height: 90px;
+    }
+  }
+
+  .dmg-t-h1 {
+    @include t-heading1;
+  }
+
+
+
+  ////////////////////
+  // heading 2 - h2 //
+  ////////////////////
+
+  @mixin t-heading2 {
+    @include t-light;
+    font-size: 36px;
+    line-height: 48px;
+  }
+
+  .dmg-t-h2 {
+    @include t-heading2;
+  }
+
+
+
+  ////////////////////
+  // Heading 3 - h3 //
+  ////////////////////
+
+  @mixin t-heading3 {
+    @include t-light;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .dmg-t-h3 {
+    @include t-heading3;
+
+    .dmg-t-dark &,
+    &.dmg-t-dark {
+      color: $color_black;
+    }
+
+    .dmg-t-light &,
+    &.dmg-t-light {
+      color: $color_white;
+    }
+  }
+
+
+
+  ////////////////////////
+  // video heading - h3 //
+  ////////////////////////
+
+  @mixin t-videoheading {
+    @include t-bold;
+    font-size: 36px;
+    line-height: 48px;
+
+    @include media(md) {
+      font-size: 48px;
+      line-height: 62px;
+    }
+  }
+
+  .dmg-t-videoheading {
+    @include t-videoheading;
+  }
+
+
+
+  ////////////////////////////
+  // servicetitle / callout //
+  ////////////////////////////
+
+  @mixin t-title {
+    @include t-light;
+    font-size: 24px;
+    line-height: 34px;
+  }
+
+  .dmg-t-servicetitle {
+    @include t-title;
+    color: $color_brand;
+  }
+
+  .dmg-t-callout {
+    @include t-title;
+  }
+
+
+
+  /////////////
+  // subhead //
+  /////////////
+
+  @mixin t-subhead {
+    @include t-regular;
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .dmg-t-subhead {
+    @include t-subhead;
+  }
+
+
+
+  /////////////
+  // eyebrow //
+  /////////////
+
+  @mixin t-eyebrow {
+    @include t-bold;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .dmg-t-eyebrow {
+    @include t-eyebrow;
+  }
+
+
+
+  ///////////////
+  // body copy //
+  ///////////////
+
+  @mixin t-bodycopy {
+    @include t-regular;
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .dmg-t-bodycopy {
+    @include t-bodycopy;
+  }
+
+
+
+  ///////////
+  // legal //
+  ///////////
+
+  @mixin t-legal {
+    @include t-regular;
+    font-size: 10px;
+    line-height: 14px;
+  }
+
+  .dmg-t-legal {
+    @include t-legal;
+  }
+
+
+
+  /////////////////
+  // price large //
+  /////////////////
+
+  @mixin t-price-lg {
+    @include t-thin;
+    display: inline;
+    font-size: 48px;
+    line-height: 60px;
+
+    &::before {
+      content: '$';
+      font-size: 50%;
+      vertical-align: super;
+    }
+
+    &::after {
+      content: '/mo.';
+      font-size: 50%;
+    }
+  }
+
+  .dmg-t-price-lg {
+    @include t-price-lg;
+  }
+
+
+
+  ////////////////
+  // price cart //
+  ////////////////
+
+  @mixin t-price-cart {
+    @include t-regular;
+    display: inline;
+    font-size: 24px;
+    line-height: 30px;
+
+    &::before {
+      content: '$';
+    }
+
+    &::after {
+      content: ' Due monthly';
+      font-size: 60%;
+    }
+  }
+
+  .dmg-t-price-cart {
+    @include t-price-cart;
+  }
+
+
+
+  ////////////////
+  // price tile //
+  ////////////////
+
+  @mixin t-price-tile {
+    @include t-medium;
+    display: inline;
+    font-size: 16px;
+    line-height: 26px;
+
+    &::before {
+      content: '$';
+    }
+
+    &::after {
+      content: '/mo.';
+    }
+  }
+
+  .dmg-t-price-tile {
+    @include t-price-tile;
+  }
+
+
+
+  /////////////
+  // savings //
+  /////////////
+
+  @mixin t-savings {
+    @include t-medium;
+    color: $color_success;
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .dmg-t-savings {
+    @include t-savings;
+  }
+
+
+
+  ////////////////
+  // promo tags //
+  ////////////////
+
+  @mixin t-promotag {
+    @include t-medium;
+    background-color: $color_brand;
+    border-radius: 4px;
+    color: $color_white;
+    display: inline;
+    font-size: 10px;
+    letter-spacing: 1px;
+    line-height: 14px;
+    padding: 5px;
+  }
+
+  .dmg-t-promotag {
+    @include t-promotag;
+  }
+}
