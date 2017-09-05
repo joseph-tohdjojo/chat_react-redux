@@ -1,25 +1,28 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'react-redux'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import './js/include.assets'
 
-import GoogleSignIn from './js/components/GoogleSignIn/GoogleSignIn'
-import EmailSignIn from './js/components/EmailSignIn/EmailSignIn'
+// redux store
+import store from './js/redux/store.js'
+
+// components
+import App from './js/components/App/App'
 
 
 
 
 
-class App extends Component {
-
-  render() {
-    return (
-      <div>
-        <GoogleSignIn />
-        <EmailSignIn />
-      </div>
-    )
-  }
+function RootApp() {
+  return (
+    <Provider store={ store }>
+      <Router>
+        <App/>
+      </Router>
+    </Provider>
+  )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<RootApp/>, document.getElementById('root'))

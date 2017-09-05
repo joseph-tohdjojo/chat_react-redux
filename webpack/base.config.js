@@ -1,4 +1,5 @@
 const webpack = require('webpack')
+const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
@@ -7,6 +8,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 module.exports = {
   entry: {
     app: './src/index.js',
+  },
+
+  resolve: {
+    alias: {
+      Components: path.resolve(__dirname, 'src', 'js', 'components'),
+    },
   },
 
   module: {
@@ -47,8 +54,7 @@ module.exports = {
               options: {
                 includePaths: [
                   'public/',
-                  'src/components',
-                  '',
+                  'src/js/components',
                 ],
               },
             },
@@ -103,9 +109,9 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.EnvironmentPlugin([
-      'NODE_ENV',
-    ]),
+    new webpack.DefinePlugin({
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+    }),
 
     // Extract imported CSS into own file
     new ExtractTextPlugin('[name].bundle.[chunkhash].css'),
