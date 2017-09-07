@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { startEmailSignup } from '../../redux/action.creators'
+import { startEmailSignup, signInWithProvider } from '../../redux/action.creators'
 
 // components
 import Input from '../Input/Input'
@@ -15,8 +15,8 @@ class Login extends Component {
   constructor() {
     super()
 
-    this.onSubmit = this.onSubmit.bind(this)
     this.redirectToChatroom = this.redirectToChatroom.bind(this)
+    this.googleClickHandler = this.googleClickHandler.bind(this)
   }
 
   componentDidMount() {
@@ -32,14 +32,13 @@ class Login extends Component {
   }
 
   redirectToChatroom() {
-    console.log('calling redirect');
     this.props.history.push('/chatroom')
   }
 
-  onSubmit(ev) {
+  googleClickHandler(ev) {
     ev.preventDefault()
-    const { email, password, createEmailAccount } = this.props
-    createEmailAccount({ email, password })
+
+    this.props.signInSignUpWithProvider('google')
   }
 
   render() {
@@ -63,50 +62,13 @@ class Login extends Component {
             { errorMessage }
           </h3>
 
-          <form
-            onSubmit={ this.onSubmit }
-          >
-            <label className='t-legal'>
-              Email
-            </label>
-            <Input
-              className=""
-              type="email"
-              placeholder="Email"
-            />
-            <label className='t-legal'>
-              Password
-            </label>
-            <Input
-              className=""
-              type="password"
-              placeholder="Password"
-            />
-
-
-            <input
-              className=""
-              type="submit"
-              placeholder="Password"
-            />
-          </form>
-
-          <hr/>
-
           <button
             className='t-subhead'
-            type="button"
-            // onClick={}
+            type='button'
+            onClick={ this.googleClickHandler }
+            style={{ margin: '0 auto' }}
           >
             Signup with Google
-          </button>
-
-          <button
-            className='t-subhead'
-            type="button"
-            // onClick={}
-          >
-            Signup with Facebook
           </button>
 
         </div>
@@ -117,8 +79,6 @@ class Login extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    email: state.credentials.email,
-    password: state.credentials.password,
     errorMessage: state.signin.errorMessage,
     loggedIn: state.signin.loggedIn,
     sendingCredentials: state.signin.sendingCredentials,
@@ -127,8 +87,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    createEmailAccount: (credentials) => {
-      dispatch(startEmailSignup(credentials))
+    signInSignUpWithProvider(providerType) {
+      dispatch(signInWithProvider('google'))
     }
   }
 }

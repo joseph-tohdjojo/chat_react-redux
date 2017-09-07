@@ -1,37 +1,15 @@
 import { combineReducers } from 'redux'
+
+import { chatroom } from './reducer.chats'
 import {
-  SET_CREDENTIALS_EMAIL,
-  SET_CREDENTIALS_PASSWORD,
-  SIGNUP_EMAIL_REQUEST,
-  SIGNUP_EMAIL_SUCCESS,
-  SIGNUP_EMAIL_FAILURE
+  SIGNIN_GOOGLE_REQUEST,
+  SIGNIN_GOOGLE_SUCCESS,
+  SIGNIN_GOOGLE_FAILURE
 } from './action.types'
 
 
 
 
-function credentials(
-  state = {
-    email: '',
-    password: '',
-  },
-  action
-) {
-  switch(action.type) {
-    case SET_CREDENTIALS_EMAIL:
-      return {
-        ...state,
-        email: action.value,
-      }
-    case SET_CREDENTIALS_PASSWORD:
-      return {
-        ...state,
-        password: action.value,
-      }
-    default:
-      return state
-  }
-}
 
 function signin(
   state = {
@@ -44,28 +22,21 @@ function signin(
   action
 ) {
   switch(action.type) {
-    case SIGNUP_EMAIL_REQUEST:
+    case SIGNIN_GOOGLE_REQUEST:
       return {
         ...state,
         sendingCredentials: true,
+        user: null,
+        loggedIn: false,
         errorCode: null,
         errorMessage: null,
       }
-    case SIGNUP_EMAIL_SUCCESS:
+    case SIGNIN_GOOGLE_SUCCESS:
       return {
         ...state,
         sendingCredentials: false,
+        user: action.user.user,
         loggedIn: true,
-        errorCode: null,
-        errorMessage: null,
-        user: action.user,
-      }
-    case SIGNUP_EMAIL_FAILURE:
-      return {
-        ...state,
-        sendingCredentials: false,
-        errorCode: action.err.code,
-        errorMessage: action.err.message,
       }
     default:
       return state
@@ -73,6 +44,6 @@ function signin(
 }
 
 export default combineReducers({
-  credentials,
   signin,
+  chatroom,
 })

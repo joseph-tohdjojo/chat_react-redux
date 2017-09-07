@@ -8,6 +8,7 @@ module.exports = merge(baseConfig, {
     inline: true,
     contentBase: 'public',
     port: '8000',
+    historyApiFallback: true,
   },
 
   module: {

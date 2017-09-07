@@ -1,6 +1,5 @@
 import { applyMiddleware, createStore } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import logger from 'redux-logger'
 
 import rootReducer from './reducer.root'
 
@@ -12,13 +11,16 @@ let middleWares = [
   thunkMiddleware,
 ]
 
+const storeArgs = [
+  rootReducer,
+]
+
 if(NODE_ENV === 'development') {
-  const logger = require('redux-logger')
-  // middleWares = [ ...middleWares, logger.default]
+  storeArgs.push(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 }
 
 const store = createStore(
-  rootReducer,
+  ...storeArgs,
   applyMiddleware(...middleWares)
 )
 

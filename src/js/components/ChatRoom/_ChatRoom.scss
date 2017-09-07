@@ -1,0 +1,46 @@
+.path-chatroom {
+  display: flex;
+  flex-direction: column;
+
+  .chat-messages {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    padding: 12px;
+  }
+
+  .messages-container {
+    @include t-regular;
+    @include t-sz-md;
+    border: 1px solid #cfcfcf;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 5px 0 rgba(204, 204, 204, 0.5);
+    box-sizing: border-box;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column-reverse;
+    height: 100%;
+    outline: none;
+    padding: 12px;
+    width: 100%;
+  }
+
+  .chat-message {
+    margin-bottom: 15px;
+
+    &.my-message {
+      text-align: right;
+    }
+  }
+
+  .chat-input {
+    box-sizing: border-box;
+    flex: 0 1 auto;
+    padding: 0 12px 12px;
+
+    input {
+      box-sizing: border-box;
+      margin: 0;
+    }
+  }
+}
